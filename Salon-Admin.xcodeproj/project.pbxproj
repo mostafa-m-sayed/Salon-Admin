@@ -7,22 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06170A0C1F6FA78C003CF51E /* UIColor Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A071F6FA78C003CF51E /* UIColor Hex.swift */; };
+		06170A0D1F6FA78C003CF51E /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A081F6FA78C003CF51E /* RoundButton.swift */; };
+		06170A0E1F6FA78C003CF51E /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A091F6FA78C003CF51E /* CircleView.swift */; };
+		06170A0F1F6FA78C003CF51E /* subclassedUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A0A1F6FA78C003CF51E /* subclassedUIButton.swift */; };
+		06170A101F6FA78C003CF51E /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A0B1F6FA78C003CF51E /* AlertMessage.swift */; };
+		06170A121F6FBAB1003CF51E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A111F6FBAB1003CF51E /* Helper.swift */; };
+		06170A141F6FD6AA003CF51E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A131F6FD6AA003CF51E /* LoginVC.swift */; };
+		06170A161F7004B5003CF51E /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06170A151F7004B5003CF51E /* RegisterVC.swift */; };
+		061DF7681F726E3A0004821F /* ServiceBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061DF7671F726E3A0004821F /* ServiceBase.swift */; };
+		061DF76B1F72A0570004821F /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061DF76A1F72A0570004821F /* AccountService.swift */; };
+		063A0B041F730BE70072BCE2 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A0B031F730BE70072BCE2 /* UserProfile.swift */; };
+		063A0B061F73180F0072BCE2 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A0B051F73180F0072BCE2 /* Spinner.swift */; };
 		063BA3A71F6DD0BB0085E04D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BA3A61F6DD0BB0085E04D /* AppDelegate.swift */; };
-		063BA3A91F6DD0BB0085E04D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BA3A81F6DD0BB0085E04D /* ViewController.swift */; };
+		063BA3A91F6DD0BB0085E04D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BA3A81F6DD0BB0085E04D /* HomeVC.swift */; };
 		063BA3AC1F6DD0BB0085E04D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 063BA3AA1F6DD0BB0085E04D /* Main.storyboard */; };
 		063BA3AE1F6DD0BB0085E04D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 063BA3AD1F6DD0BB0085E04D /* Assets.xcassets */; };
 		063BA3B11F6DD0BB0085E04D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 063BA3AF1F6DD0BB0085E04D /* LaunchScreen.storyboard */; };
+		063C63991F712262000CD577 /* RegisterLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C63981F712262000CD577 /* RegisterLocationVC.swift */; };
+		06D0CB0A1F7436BA00E11AE0 /* UIViewScaleBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D0CB091F7436BA00E11AE0 /* UIViewScaleBackgroundImage.swift */; };
+		06D0CB0E1F7451A400E11AE0 /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D0CB0D1F7451A400E11AE0 /* MainPageVC.swift */; };
+		06D0CB101F74719500E11AE0 /* MyProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D0CB0F1F74719500E11AE0 /* MyProfileVC.swift */; };
+		06D0CB121F747D5300E11AE0 /* UIImageDownloadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D0CB111F747D5300E11AE0 /* UIImageDownloadFromURL.swift */; };
+		06F1020A1F706A3600D4E518 /* CompleteRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F102091F706A3600D4E518 /* CompleteRegisterVC.swift */; };
 		D88DD9BF2661D8714E0B8BA8 /* Pods_Salon_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2292CF330F714B0D7741D3 /* Pods_Salon_Admin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06170A071F6FA78C003CF51E /* UIColor Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor Hex.swift"; sourceTree = "<group>"; };
+		06170A081F6FA78C003CF51E /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		06170A091F6FA78C003CF51E /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		06170A0A1F6FA78C003CF51E /* subclassedUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = subclassedUIButton.swift; sourceTree = "<group>"; };
+		06170A0B1F6FA78C003CF51E /* AlertMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		06170A111F6FBAB1003CF51E /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		06170A131F6FD6AA003CF51E /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		06170A151F7004B5003CF51E /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		061DF7671F726E3A0004821F /* ServiceBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceBase.swift; sourceTree = "<group>"; };
+		061DF76A1F72A0570004821F /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		063A0B031F730BE70072BCE2 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		063A0B051F73180F0072BCE2 /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		063BA3A31F6DD0BB0085E04D /* Salon-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salon-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		063BA3A61F6DD0BB0085E04D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		063BA3A81F6DD0BB0085E04D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		063BA3A81F6DD0BB0085E04D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		063BA3AB1F6DD0BB0085E04D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		063BA3AD1F6DD0BB0085E04D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		063BA3B01F6DD0BB0085E04D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		063BA3B21F6DD0BB0085E04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		063C63981F712262000CD577 /* RegisterLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterLocationVC.swift; sourceTree = "<group>"; };
+		06D0CB091F7436BA00E11AE0 /* UIViewScaleBackgroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewScaleBackgroundImage.swift; sourceTree = "<group>"; };
+		06D0CB0D1F7451A400E11AE0 /* MainPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageVC.swift; sourceTree = "<group>"; };
+		06D0CB0F1F74719500E11AE0 /* MyProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileVC.swift; sourceTree = "<group>"; };
+		06D0CB111F747D5300E11AE0 /* UIImageDownloadFromURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageDownloadFromURL.swift; sourceTree = "<group>"; };
+		06F102091F706A3600D4E518 /* CompleteRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteRegisterVC.swift; sourceTree = "<group>"; };
 		2F71841952777F1BADF4424B /* Pods-Salon-Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salon-Admin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Salon-Admin/Pods-Salon-Admin.release.xcconfig"; sourceTree = "<group>"; };
 		C5F39087C3740F67199D3CDC /* Pods-Salon-Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salon-Admin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Salon-Admin/Pods-Salon-Admin.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2292CF330F714B0D7741D3 /* Pods_Salon_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Salon_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +76,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06170A001F6FA595003CF51E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				063A0B031F730BE70072BCE2 /* UserProfile.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		06170A011F6FA59F003CF51E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				063BA3AA1F6DD0BB0085E04D /* Main.storyboard */,
+				063BA3AF1F6DD0BB0085E04D /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		06170A021F6FA5A7003CF51E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				063BA3A61F6DD0BB0085E04D /* AppDelegate.swift */,
+				063BA3A81F6DD0BB0085E04D /* HomeVC.swift */,
+				06170A131F6FD6AA003CF51E /* LoginVC.swift */,
+				06170A151F7004B5003CF51E /* RegisterVC.swift */,
+				06F102091F706A3600D4E518 /* CompleteRegisterVC.swift */,
+				063C63981F712262000CD577 /* RegisterLocationVC.swift */,
+				06D0CB0D1F7451A400E11AE0 /* MainPageVC.swift */,
+				06D0CB0F1F74719500E11AE0 /* MyProfileVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		06170A031F6FA5D2003CF51E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				06170A111F6FBAB1003CF51E /* Helper.swift */,
+				063BA3B21F6DD0BB0085E04D /* Info.plist */,
+				063BA3AD1F6DD0BB0085E04D /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		06170A041F6FA5DA003CF51E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				063A0B051F73180F0072BCE2 /* Spinner.swift */,
+				06170A071F6FA78C003CF51E /* UIColor Hex.swift */,
+				06170A081F6FA78C003CF51E /* RoundButton.swift */,
+				06170A091F6FA78C003CF51E /* CircleView.swift */,
+				06170A0A1F6FA78C003CF51E /* subclassedUIButton.swift */,
+				06170A0B1F6FA78C003CF51E /* AlertMessage.swift */,
+				06D0CB091F7436BA00E11AE0 /* UIViewScaleBackgroundImage.swift */,
+				06D0CB111F747D5300E11AE0 /* UIImageDownloadFromURL.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		06170A051F6FA5E1003CF51E /* ServiceBase */ = {
+			isa = PBXGroup;
+			children = (
+				061DF7671F726E3A0004821F /* ServiceBase.swift */,
+			);
+			name = ServiceBase;
+			sourceTree = "<group>";
+		};
+		06170A061F6FA5EA003CF51E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				061DF76A1F72A0570004821F /* AccountService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		063BA39A1F6DD0BB0085E04D = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +170,13 @@
 		063BA3A51F6DD0BB0085E04D /* Salon-Admin */ = {
 			isa = PBXGroup;
 			children = (
-				063BA3A61F6DD0BB0085E04D /* AppDelegate.swift */,
-				063BA3A81F6DD0BB0085E04D /* ViewController.swift */,
-				063BA3AA1F6DD0BB0085E04D /* Main.storyboard */,
-				063BA3AD1F6DD0BB0085E04D /* Assets.xcassets */,
-				063BA3AF1F6DD0BB0085E04D /* LaunchScreen.storyboard */,
-				063BA3B21F6DD0BB0085E04D /* Info.plist */,
+				06170A001F6FA595003CF51E /* Model */,
+				06170A011F6FA59F003CF51E /* View */,
+				06170A061F6FA5EA003CF51E /* Services */,
+				06170A051F6FA5E1003CF51E /* ServiceBase */,
+				06170A041F6FA5DA003CF51E /* Extensions */,
+				06170A031F6FA5D2003CF51E /* Resources */,
+				06170A021F6FA5A7003CF51E /* Controller */,
 			);
 			path = "Salon-Admin";
 			sourceTree = "<group>";
@@ -168,10 +278,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Salon-Admin/Pods-Salon-Admin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CountryPickerSwift/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -202,9 +318,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Salon-Admin/Pods-Salon-Admin-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -218,8 +339,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				063BA3A91F6DD0BB0085E04D /* ViewController.swift in Sources */,
+				06D0CB0A1F7436BA00E11AE0 /* UIViewScaleBackgroundImage.swift in Sources */,
+				06170A0D1F6FA78C003CF51E /* RoundButton.swift in Sources */,
+				06170A0E1F6FA78C003CF51E /* CircleView.swift in Sources */,
+				063A0B041F730BE70072BCE2 /* UserProfile.swift in Sources */,
+				06170A0F1F6FA78C003CF51E /* subclassedUIButton.swift in Sources */,
+				063BA3A91F6DD0BB0085E04D /* HomeVC.swift in Sources */,
+				06D0CB0E1F7451A400E11AE0 /* MainPageVC.swift in Sources */,
+				06170A0C1F6FA78C003CF51E /* UIColor Hex.swift in Sources */,
+				06D0CB101F74719500E11AE0 /* MyProfileVC.swift in Sources */,
+				06170A141F6FD6AA003CF51E /* LoginVC.swift in Sources */,
+				063A0B061F73180F0072BCE2 /* Spinner.swift in Sources */,
+				06F1020A1F706A3600D4E518 /* CompleteRegisterVC.swift in Sources */,
 				063BA3A71F6DD0BB0085E04D /* AppDelegate.swift in Sources */,
+				061DF7681F726E3A0004821F /* ServiceBase.swift in Sources */,
+				06170A101F6FA78C003CF51E /* AlertMessage.swift in Sources */,
+				06170A121F6FBAB1003CF51E /* Helper.swift in Sources */,
+				061DF76B1F72A0570004821F /* AccountService.swift in Sources */,
+				063C63991F712262000CD577 /* RegisterLocationVC.swift in Sources */,
+				06170A161F7004B5003CF51E /* RegisterVC.swift in Sources */,
+				06D0CB121F747D5300E11AE0 /* UIImageDownloadFromURL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5C5657XP2G;
 				INFOPLIST_FILE = "Salon-Admin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mostafa.Salon-Admin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,6 +501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5C5657XP2G;
 				INFOPLIST_FILE = "Salon-Admin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mostafa.Salon-Admin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -387,6 +528,7 @@
 				063BA3B71F6DD0BB0085E04D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,4 +7,11 @@ target 'Salon-Admin' do
 
   # Pods for Salon-Admin
     pod 'Alamofire', '~> 4.5'
+    pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleMaps'
+  pod 'CountryPickerSwift', '1.4.4'
+  pod 'IQKeyboardManagerSwift', '4.0.10'
+
 end
