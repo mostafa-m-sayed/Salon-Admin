@@ -8,14 +8,15 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import DatePickerDialog
 
 class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UINavigationControllerDelegate ,RegisterUser,LoginUser {
     
     @IBOutlet weak var txtFrom: SkyFloatingLabelTextField!
     @IBOutlet weak var txtTo: SkyFloatingLabelTextField!
-    
     @IBOutlet weak var imageContainer: UIImageView!
     @IBOutlet weak var imageProfilePic: UIImageView!
+    
     var firstTime=true
     var userDetails : UserProfile!
     var accountService: AccountService = AccountService()
@@ -32,18 +33,31 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
         accountService.RegisterUserDelegate = self
         accountService.LoginUserDelegate = self
         imagePicker.delegate = self
-        
+        }
+   
+    @IBAction func showTimePicker(_ sender: UIButton) {
+        DatePickerDialog().show(title:"DatePicker",doneButtonTitle: "Done",cancelButtonTitle: "Cancel",datePickerMode: .time){
+            (date) -> Void in
+            if let selectedDate = date{
+                let time = Helper.sharedInstance.getTimeFromDate(date: selectedDate)
+                if sender.tag == 0{
+                    self.txtFrom.text = Helper.sharedInstance.convertTimeFormat(time24: time)
+                }else{
+                    self.txtTo.text = Helper.sharedInstance.convertTimeFormat(time24: time)
+                }
+            }
+        }
     }
-    func RegisterUserSuccess(salonId: String){
+       func RegisterUserSuccess(salonId: String){
         viewActivitySmall?.dismissAndStopAnimation()
-        alert(message: "Waiting for confirmation", buttonMessage: "OK")
+        alert(message:NSLocalizedString("Waiting confirmation", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
         print(salonId)
         firstTime=false
         userDetails.addUserID(userID: salonId)
     }
     func RegisterUserFail(ErrorMessage:String){
         viewActivitySmall?.dismissAndStopAnimation()
-        alert(message: ErrorMessage, buttonMessage: "OK")
+        alert(message: ErrorMessage, buttonMessage: NSLocalizedString("OK", comment: ""))
         print(ErrorMessage)
     }
     func LoginUserSuccess(salonData: Dictionary<String,AnyObject>){
@@ -56,19 +70,17 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
     func LoginUserFail(ErrorMessage:String){
         viewActivitySmall?.dismissAndStopAnimation()
         print(ErrorMessage)
-        alert(message: ErrorMessage, buttonMessage: "OK")
+        alert(message: ErrorMessage, buttonMessage: NSLocalizedString("OK", comment: ""))
     }
     
     func loadImage(_ sender:UITapGestureRecognizer){
-        let alert =  UIAlertController(title: "Choose Image From", message: "", preferredStyle: .alert)
-        
-        
-        alert.addAction(UIAlertAction(title: "Phone", style: .default, handler: { (action : UIAlertAction) in
+        let alert =  UIAlertController(title:NSLocalizedString("Choose Image Loc", comment: ""), message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:NSLocalizedString("Phone", comment: ""), style: .default, handler: { (action : UIAlertAction) in
             
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true , completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action : UIAlertAction) in
+        alert.addAction(UIAlertAction(title:NSLocalizedString("Camera", comment: ""), style: .default, handler: { (action : UIAlertAction) in
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true , completion: nil)
         }))
@@ -106,15 +118,15 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
     
     @IBAction func btnContinue_Click(_ sender: Any) {
         if txtFrom.text == ""{
-            alert(message: "Working Hours is empty", buttonMessage: "OK")
+            alert(message:NSLocalizedString("Null Working Hours", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
         if txtTo.text == ""{
-            alert(message: "Working Hours is empty", buttonMessage: "OK")
+            alert(message: NSLocalizedString("Null Working Hours",comment:""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
         if uploadedImage==nil{
-            alert(message: "Select an image", buttonMessage: "OK")
+            alert(message: NSLocalizedString("Null Image", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
         if firstTime{
@@ -132,7 +144,7 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
     }
     
     func initNavigationBar(){
-        self.navigationItem.title = "Complete Register"
+        self.navigationItem.title = NSLocalizedString("Complete Register", comment: "")
         self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
         self.navigationController?.navigationBar.tintColor =  UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -143,11 +155,11 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
     func initTextFields(){
         let floatingTextColor = UIColor.gray
         
-        txtFrom.placeholder = "From"
+        txtFrom.placeholder = NSLocalizedString("From", comment: "")
         txtFrom.selectedTitleColor = floatingTextColor
         //txtFrom.title = "Enter Date From"  Uncomment to change title
         
-        txtTo.placeholder = "To"
+        txtTo.placeholder = NSLocalizedString("To", comment: "")
         txtTo.selectedTitleColor = floatingTextColor
         //txtTo.title = "Enter Date To"  Uncomment to change title
     }
@@ -165,5 +177,4 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
         viewActivitySmall?.showAndStartAnimate()
         viewActivitySmall?.center = CGPoint(x: (self.view?.frame.size.width)!/2, y: (self.view?.frame.size.height)!/2)
     }
-    
 }

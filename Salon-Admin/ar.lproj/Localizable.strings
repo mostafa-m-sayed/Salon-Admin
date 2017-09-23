@@ -1,0 +1,42 @@
+
+//MARK: Place Holders
+
+"Name" = "اسم الصالون/خبيرة التجميل";
+"Email" = "البريد الالكتروني";
+"Password" = "كلمة المرور";
+"From" = "من";
+"To" = "إلي";
+"Phone Or Email" = "رقم الموبيل/البريد الالكتروني";
+
+//MARK: Page Titles
+
+"Register" = "انشاء حساب";
+"Complete Register" = "اكمال الانشاء";
+"Locate Yourself" = "تحديد موقعك";
+"My Profile" = "حسابي";
+
+//MARK: Error Messages
+
+"Null Password" = "ادخل كلمة المرور";
+"Null Name" = "ادخل الاسم";
+"Null Email" = "ادخل البريد الالكتروني";
+"Null Mobile" = "ادخل رقم الهاتف";
+"Null Working Hours" = "ادخل مواعيد العمل";
+"Null Image" = "اختر صورة";
+
+
+"Waiting confirmation" = "في انتظار التأكيد";
+"Select Location" = "اختر موقعك";
+"Relogin" = "خطأ، برجاء اعاده تسجيل الدخول";
+
+//MARK: Buttons
+
+"OK" = "موافق";
+"Edit" = "تعديل";
+"Save" = "حفظ";
+"Logout"="خروج";
+
+//MARK: Image
+"Choose Image Loc" = "اختيار الصورة من";
+"Phone" = "الهاتف";
+"Camera" = "الكاميرا";

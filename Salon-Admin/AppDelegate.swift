@@ -21,6 +21,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyBmODlRL1mtWFG0EebVQr_ahbnqGhdMi4U")
         GMSPlacesClient.provideAPIKey("AIzaSyBmODlRL1mtWFG0EebVQr_ahbnqGhdMi4U")
         // Override point for customization after application launch.
+        
+        
+        if L102Language.currentAppleLanguage() == "ar"
+        {
+            L102Language.setAppleLAnguageTo(lang: "ar")
+            Helper.sharedInstance.storeAppLanguage(lang: "ar")
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        }
+        else{
+            L102Language.setAppleLAnguageTo(lang: "en")
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+            
+            Helper.sharedInstance.storeAppLanguage(lang: "en")
+        }
+        L012Localizer.DoTheMagic()
+        
+        
+        
+        
+        
         return true
     }
 

@@ -11,7 +11,10 @@ target 'Salon-Admin' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
-  pod 'CountryPickerSwift', '1.4.4'
   pod 'IQKeyboardManagerSwift', '4.0.10'
+  pod 'NKVPhonePicker'
+  pod 'Cosmos', '~> 11.0'
+  pod ‘DatePickerDialog’
+
 
 end

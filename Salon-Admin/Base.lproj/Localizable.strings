@@ -1,0 +1,40 @@
+
+//MARK: Place Holders
+
+"Name" = "Salon Name/Beauty Expert";
+"Email" = "Email Address";
+"Password" = "Password";
+"From" = "From";
+"To" = "To";
+"Phone Or Email" = "Phone number/Email";
+
+//MARK: Page Titles
+
+"Register" = "Register";
+"Complete Register" = "Complete Register";
+"Locate Yourself" = "Locate Yourself";
+"My Profile" = "My Profile";
+
+//MARK: Error Messages
+
+"Null Password" = "Password can't be empty";
+"Null Name" = "Name can't be empty";
+"Null Email" = "Email can't be empty";
+"Null Mobile" = "Mobile can't be empty";
+"Null Working Hours" = "Working Hours can't be empty";
+"Null Image" = "Select an image";
+
+
+"Waiting confirmation" = "Waiting for confirmation";
+"Select Location" = "Select Your Location";
+"Relogin" = "Error, Please Relogin";
+//MARK: Buttons
+"OK" = "Ok";
+"Edit" = "Edit";
+"Save" = "Save";
+"Logout"="Logout";
+
+//MARK: Image
+"Choose Image Loc" = "Choose Image From";
+"Phone" = "Phone";
+"Camera" = "Camera";

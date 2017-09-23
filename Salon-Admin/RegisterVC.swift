@@ -7,74 +7,56 @@
 //
 
 import UIKit
+import NKVPhonePicker
 import SkyFloatingLabelTextField
-import CountryPicker
 
-class RegisterVC: UIViewController, CountryPickerDelegate {
-
+class RegisterVC: UIViewController {
+    
+    @IBOutlet weak var txtCountryCode: NKVPhonePickerTextField!
+    
     @IBOutlet weak var txtName: SkyFloatingLabelTextField!
     @IBOutlet weak var txtEmail: SkyFloatingLabelTextField!
     @IBOutlet weak var txtPassword: SkyFloatingLabelTextField!
     @IBOutlet weak var txtMobile: UITextField!
-    @IBOutlet weak var txtCountryCode: UITextField!
-    @IBOutlet weak var viewCountryCode: UIView!
-    
-    @IBOutlet weak var pickerCode: CountryPicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initTextFields()
         initNavigationBar()
+        initPicker()
         
         //get corrent country
-        let locale = Locale.current
-        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
-        //init Picker
-        pickerCode.countryPickerDelegate = self
-        pickerCode.showPhoneNumbers = true
-        pickerCode.setCountry(code!)
-        addGesture()
-    }
-    
-    func showCountryPicker(_ sender:UITapGestureRecognizer){
-       pickerCode.isHidden = false
+        //let locale = Locale.current
+        //let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
     }
     
     @IBAction func btnContinue_Click(_ sender: Any) {
-//        if txtPassword.text == ""{
-//            alert(message: "Password is empty", buttonMessage: "")
-//            return
-//        }
-//        if txtName.text == ""{
-//            alert(message: "Name is empty", buttonMessage: "")
-//            return
-//        }
-//        if txtEmail.text == ""{
-//            alert(message: "Email is empty", buttonMessage: "")
-//            return
-//        }
-//        if txtMobile.text == ""{
-//            alert(message: "Mobile is empty", buttonMessage: "")
-//            return
-//        }
-//        if txtCountryCode.text == ""{
-//            alert(message: "Country Code is empty", buttonMessage: "")
-//            return
-//        }
-        let mobile = "\(txtCountryCode!.text!)\(txtMobile!.text!)"
-        let userDetails = UserProfile(name: txtName.text!, email: txtEmail.text!, mobile: mobile, password: txtPassword.text!)
+        print(txtCountryCode.code)
+        
+        if txtPassword.text == ""{
+            alert(message: NSLocalizedString("Null Password", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
+            return
+        }
+        if txtName.text == ""{
+            alert(message: NSLocalizedString("Null Name", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
+            return
+        }
+        if txtEmail.text == ""{
+            alert(message: NSLocalizedString("Null Email", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
+            return
+        }
+        if txtMobile.text == ""{
+            alert(message: NSLocalizedString("Null Mobile", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
+            return
+        }
+        
+        let userDetails = UserProfile(name: txtName.text!, email: txtEmail.text!, mobile: txtMobile.text!, password: txtPassword.text!,countryCode:txtCountryCode.code)
         
         let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "CompleteRegisterVC") as? CompleteRegisterVC
         nextVC?.userDetails = userDetails
         self.navigationController?.pushViewController(nextVC!, animated: true)
-
+        
     }
-    func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
-        //pick up anythink
-        pickerCode.isHidden = true
-        txtCountryCode.text = phoneCode
-    }
-    
     @IBAction func btnBack_Click(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
@@ -82,30 +64,32 @@ class RegisterVC: UIViewController, CountryPickerDelegate {
     func initTextFields(){
         let floatingTextColor = UIColor.gray
         
-        txtName.placeholder = "Salon Name/Beauty Expert"
+        txtName.placeholder = NSLocalizedString("Name", comment: "")
         txtName.selectedTitleColor = floatingTextColor
         //txtName.title = "Enter Salon Name or Beauty Expert Name"  Uncomment to change title
         
-        txtEmail.placeholder = "Email Address"
+        txtEmail.placeholder = NSLocalizedString("Email", comment: "")
         txtEmail.selectedTitleColor = floatingTextColor
         //txtEmail.title = "Enter Email Address"  Uncomment to change title
         
-        txtPassword.placeholder = "Password"
+        txtPassword.placeholder = NSLocalizedString("Password", comment: "")
         txtPassword.selectedTitleColor = floatingTextColor
         //txtEmail.title = "Enter Password"  Uncomment to change title
-        }
-
+    }
+    
     func initNavigationBar(){
-        self.navigationItem.title = "Register"
+        self.navigationItem.title = NSLocalizedString("Register", comment: "")
         self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
         self.navigationController?.navigationBar.tintColor =  UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
-    func addGesture(){
-        let registerClick = UITapGestureRecognizer(target: self, action: #selector (self.showCountryPicker(_:)))
-        viewCountryCode.addGestureRecognizer(registerClick)
+    func initPicker(){
+        txtCountryCode.favoriteCountriesLocaleIdentifiers = ["RU", "ER", "JM"]
+        txtCountryCode.phonePickerDelegate =  self
+        let country = Country.countryBy(countryCode: "EG")
+        txtCountryCode.currentSelectedCountry = country
+        //txtCountryCode.text = "+20"
     }
-
+    
 }

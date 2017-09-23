@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.5.0)
-  - CountryPickerSwift (1.4.4)
+  - Cosmos (11.0.3)
+  - DatePickerDialog (1.1.7)
   - GoogleMaps (2.4.0):
     - GoogleMaps/Maps (= 2.4.0)
   - GoogleMaps/Base (2.4.0)
@@ -12,26 +13,31 @@ PODS:
   - GooglePlaces (2.4.0):
     - GoogleMaps/Base (= 2.4.0)
   - IQKeyboardManagerSwift (4.0.10)
+  - NKVPhonePicker (1.0.2)
   - SkyFloatingLabelTextField (3.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
-  - CountryPickerSwift (= 1.4.4)
+  - Cosmos (~> 11.0)
+  - DatePickerDialog
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
   - IQKeyboardManagerSwift (= 4.0.10)
+  - NKVPhonePicker
   - SkyFloatingLabelTextField (~> 3.0)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  CountryPickerSwift: e31e67f2b95eb1fa6ad230e9eb0b49b020526d99
+  Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
+  DatePickerDialog: bd5e7e92e4da2c6a8966b28d5f5d8f335d6c2c63
   GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
   GooglePlacePicker: 755f10343d71280c7b016823e73fbae9625dfa8a
   GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
+  NKVPhonePicker: d72e1d3f8f284393baec220d6f1b72933136773a
   SkyFloatingLabelTextField: 4e2d2f7160af660ed1da6bb9d0027b5c474b4b79
 
-PODFILE CHECKSUM: 8afe276ddf995ba06cd30a92eacde3d0ef9b51b4
+PODFILE CHECKSUM: 2ebbd2ff0773efe02c09a6b8c0cb48e884294528
 
 COCOAPODS: 1.3.0.beta.2

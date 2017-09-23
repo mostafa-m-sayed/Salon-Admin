@@ -45,7 +45,7 @@ class LoginVC: UIViewController,LoginUser {
     func LoginUserFail(ErrorMessage:String){
         viewActivitySmall?.dismissAndStopAnimation()
         print(ErrorMessage)
-        alert(message: ErrorMessage, buttonMessage: "OK")
+        alert(message: ErrorMessage, buttonMessage:NSLocalizedString("OK", comment: ""))
 
     }
     
@@ -54,12 +54,12 @@ class LoginVC: UIViewController,LoginUser {
     }
     
     @IBAction func btnLogin_Click(_ sender: Any) {
-        if txtUserName.text==""{
-            alert(message: "User Name Error", buttonMessage: "OK")
+        if txtUserName.text == ""{
+            alert(message: NSLocalizedString("Email", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
-        if txtPassword.text==""{
-            alert(message: "Password Error", buttonMessage: "OK")
+        if txtPassword.text == ""{
+            alert(message: NSLocalizedString("Password", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
         showLoader()
@@ -85,11 +85,11 @@ class LoginVC: UIViewController,LoginUser {
     func initTextFields(){
         let floatingTextColor = UIColor.gray
         
-        txtUserName.placeholder = "Phone number/Email"
+        txtUserName.placeholder = NSLocalizedString("Phone Or Email", comment: "")
         txtUserName.selectedTitleColor = floatingTextColor
         //txtUserName.title = "Enter Phone number or Email Address"  Uncomment to change title
         
-        txtPassword.placeholder = "Password"
+        txtPassword.placeholder = NSLocalizedString("Password", comment: "")
         txtPassword.selectedTitleColor = floatingTextColor
         //txtPassword.title = "Enter Password"  Uncomment to change title
     }

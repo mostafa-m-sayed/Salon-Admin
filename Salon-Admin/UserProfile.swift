@@ -135,6 +135,13 @@ class UserProfile {
             return _rate_count
         }
     }
+    public var countryId: String{
+        if _rate_count == nil {
+            return ""
+        }else{
+            return _country_id
+        }
+    }
     public var devicetoken: String{
         if _devicetoken == nil {
             return ""
@@ -156,11 +163,12 @@ class UserProfile {
             return _open
         }
     }
-    init(name:String,email:String,mobile:String,password:String) {
+    init(name:String,email:String,mobile:String,password:String,countryCode:String) {
         _name = name
         _email = email
         _mobile = mobile
         _password = password
+        _country_id=countryCode
     }
     init(id:String,name:String,email:String,mobile:String) {
         _name = name
@@ -168,7 +176,7 @@ class UserProfile {
         _mobile = mobile
         _password = password
         _id = id
-    }
+    }//For Helpers
     init(salonData:Dictionary<String,AnyObject>) {
         if let id = salonData["id"] as? String{
             _id = id

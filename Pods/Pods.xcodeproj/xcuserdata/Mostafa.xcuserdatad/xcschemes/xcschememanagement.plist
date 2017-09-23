@@ -9,17 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CountryPickerSwift-CountryPicker.xcscheme</key>
+		<key>Cosmos.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CountryPickerSwift.xcscheme</key>
+		<key>DatePickerDialog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NKVPhonePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,12 +42,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5B9A544927D9ED12AD3F9525E2E37D39</key>
+		<key>184A1650DC0B648BD756068E60BF2C59</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>802028B5CBC203D671AC3C8F5C24E462</key>
+		<key>4FDC533A4360A68ABDCE852F04B30927</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0E5A851C6CE6EF8E4966C457FDE009D</key>
+		<key>BC079D1F0607FA687152937078F9BC3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CAFA66C6386C4C29676B491C1664E100</key>
+		<key>D43AA988F02BBAEAA30D461A0AFC5644</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E8B07F23ECFB5BD02D88818419B4D693</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -264,7 +264,7 @@ class AccountService: NSObject{
             }
         }
     }
-    func UpdateProfileUser(id:Int, name:String, email:String, password:String, mobile:String, countryId:Int, workFrom:String,workTo:String,image:String,lat:Float,lng:Float){
+    func UpdateProfileUser(id:String, name:String, email:String, password:String, mobile:String, countryId:String, workFrom:String,workTo:String,image:String,lat:String,lng:String){
         let serviceURL = "\(serviceBase.BASE_URL)\(serviceBase.UpdateProfile)"
         let params:Dictionary<String,Any> = [
             "salon_id":id,
@@ -280,9 +280,11 @@ class AccountService: NSObject{
             "img": image,
             "lang": Helper.sharedInstance.getAppLanguage()
         ]
+        print("params: ")
+        print(params)
         Alamofire.request(serviceURL, method: .post, parameters:params ,encoding: URLEncoding()).responseJSON {
             ( response ) in
-            
+            print(response)
             switch response.result {
             case .success :
                 if let  res = response.result.value as? [String : Any]{

@@ -33,16 +33,15 @@ class Helper {
     //        defaults.set(number, forKey: "Number")
     //        defaults.set(address, forKey: "Address")
     //    }
-    //    func clearUserData() {
-    //        defaults.removeObject(forKey: "ID")
-    //        defaults.removeObject(forKey: "Email")
-    //        defaults.removeObject(forKey: "Name")
-    //        defaults.removeObject(forKey: "Type")
-    //        defaults.removeObject(forKey: "TypeText")
-    //        defaults.removeObject(forKey: "Remember")
-    //        defaults.removeObject(forKey: "Number")
-    //        defaults.removeObject(forKey: "Address")
-    //    }
+        func clearUserData() {
+            defaults.removeObject(forKey: "ID")
+            defaults.removeObject(forKey: "Email")
+            defaults.removeObject(forKey: "Name")
+            defaults.removeObject(forKey: "Number")
+            defaults.removeObject(forKey: "DToken")
+            defaults.removeObject(forKey: "Complete")
+            defaults.removeObject(forKey: "Lang")
+        }
     
     func storeAppLanguage(lang: String){
         defaults.set(lang, forKey: "Lang")
@@ -63,4 +62,19 @@ class Helper {
         return "none"
     }
 
+    func convertTimeFormat(time24:String) ->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let date = dateFormatter.date(from: time24)
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: date!)
+    }
+    func getTimeFromDate(date:Date) -> String{
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        //let seconds = calendar.component(.second, from: date)
+        return "\(hour):\(minutes)"
+        //print("hours = \(hour):\(minutes):\(seconds)")
+    }
 }

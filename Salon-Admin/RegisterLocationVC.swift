@@ -21,7 +21,6 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
     var locationManager = CLLocationManager()
     var currentLocation : CLLocation!
     var pinLocation:CLLocationCoordinate2D!
-    var didFindMyLocation = false
     
     var accountService: AccountService = AccountService()
     var viewActivitySmall : SHActivityView?
@@ -69,7 +68,7 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
     }
     func CompleteRegisterUserFail(ErrorMessage:String){
         viewActivitySmall?.dismissAndStopAnimation()
-        alert(message: ErrorMessage, buttonMessage: "OK")
+        alert(message: ErrorMessage, buttonMessage: NSLocalizedString("OK", comment: ""))
         print(ErrorMessage)
     }
     
@@ -79,11 +78,11 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
     
     @IBAction func btnContinue_Click(_ sender: Any) {
         if pinLocation==nil{
-            alert(message: "Select Your Location", buttonMessage: "OK")
+            alert(message:NSLocalizedString("Select Location", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
         if userID==nil||userID==""{
-            alert(message: "Failed!", buttonMessage: "OK")
+            alert(message: NSLocalizedString("Relogin", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
         showLoader()
@@ -148,7 +147,7 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
 
     //MARK: Helpers
     func initNavigationBar(){
-        self.navigationItem.title = "Locate Yourself"
+        self.navigationItem.title = NSLocalizedString("Locate Yourself", comment: "")
         self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
         self.navigationController?.navigationBar.tintColor =  UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
