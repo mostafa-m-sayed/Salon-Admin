@@ -8,30 +8,28 @@
 
 import UIKit
 import GoogleMaps
-import NKVPhonePicker
 import Cosmos
 import DatePickerDialog
 
-class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CodeDropDownDelegate {
     
+    @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var imgProfilePic: UIImageView!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtWorkFrom: UITextField!
     @IBOutlet weak var txtWorkTo: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
-    @IBOutlet weak var txtCountryCode: NKVPhonePickerTextField!
     @IBOutlet weak var txtMobile: UITextField!
     @IBOutlet weak var viewMapControl: GMSMapView!
     @IBOutlet weak var viewRating: CosmosView!
     @IBOutlet weak var btnBarEdit: UIBarButtonItem!
-  
-   
     @IBOutlet weak var txtSeparator: UITextField!
     @IBOutlet weak var btnWorkingFrom: UIButton!
     @IBOutlet weak var btnWorkingTo: UIButton!
+    @IBOutlet weak var viewCode: CodeDropDown!
     
-    
+    var selectCountry : Country!
     var location : CLLocationCoordinate2D!
     let imagePicker = UIImagePickerController()
     var userData:UserProfile!
@@ -40,21 +38,21 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //initNavigationBar()
+        viewCode.delegate = self
         enableDisableFields(status: "disable")
         accountService.GetInfoUserDelegate = self
         accountService.UpdateProfileUserDelegate = self
         showLoader()
         initMap()
-        initPicker()
         addGesture()
         imagePicker.delegate = self
-        //self.view.isUserInteractionEnabled=false
+        viewMapControl.delegate = self
+        //locationManager.delegate = self
         accountService.GetInfoUser(id: Helper.sharedInstance.UserDetails.id)
         
     }
     @IBAction func showTimePicker(_ sender: UIButton) {
-        DatePickerDialog().show(title:"DatePicker",doneButtonTitle: "Done",cancelButtonTitle: "Cancel",datePickerMode: .time){
+        DatePickerDialog().show("DatePicker",doneButtonTitle: "Done",cancelButtonTitle: "Cancel",datePickerMode: .time){
             (date) -> Void in
             if let selectedDate = date{
                 let time = Helper.sharedInstance.getTimeFromDate(date: selectedDate)
@@ -66,7 +64,38 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
             }
         }
     }
+    @IBAction func btnLogout_Click(_ sender: Any) {
+        
+        Helper.sharedInstance.clearUserData()
+        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC
+        self.navigationController?.pushViewController(nextVC!, animated: true)
+        
+    }
+    @IBAction func btnEdit_Click(_ sender: Any) {
+        if btnBarEdit.title == NSLocalizedString("Edit", comment: ""){
+            btnBarEdit.title = NSLocalizedString("Save", comment: "")
+            enableDisableFields(status: "enable")
+        }else{
+            btnBarEdit.title = NSLocalizedString("Edit", comment: "")
+            enableDisableFields(status: "disable")
+            showLoader()
+            
+            accountService.UpdateProfileUser(id: userData.id, name: txtName.text!, email: txtEmail.text!, password: userData.password, mobile: txtMobile.text!, countryId: selectCountry.id, workFrom: txtWorkFrom.text!, workTo: txtWorkTo.text!, image: userData.img, lat: "\(location.latitude)", lng: "\(location.longitude)")
+        }
+    }
 
+    func codeDropDown(_ codeDropDown: CodeDropDown, didSelectItem country: Country) {
+        selectCountry = country
+    }
+    func updateLocation(cordinates:CLLocationCoordinate2D) {
+        location = cordinates
+        viewMapControl.clear()
+        addMarker(cordinates: location)
+        let camera = GMSCameraPosition.camera(withLatitude: cordinates.latitude, longitude: cordinates.longitude, zoom: 6.0)
+        viewMapControl.camera = camera
+
+        
+    }
     func UpdateProfileUserSuccess(salonData: Dictionary<String,AnyObject>){
         viewActivitySmall?.dismissAndStopAnimation()
         print(salonData)
@@ -86,22 +115,32 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
         txtEmail.text = userData.email
         txtMobile.text = userData.mobile
         viewRating.rating = Double(userData.rate)!
-        let country = Country.countryBy(phoneExtension:userData.countryId)
-        txtCountryCode.currentSelectedCountry = country
+        let country = viewCode.GetCountryById(id: userData.countryId)
+        selectCountry = country
+        viewCode.setSelectedItem(country: selectCountry)
         imgProfilePic.downloadedFrom(link:userData.imgURL)
         imgProfilePic.contentMode = .scaleToFill
         location=CLLocationCoordinate2D(latitude: Double(userData.lat)!, longitude: Double(userData.lng)!)
         addMarker(cordinates: location)
+        let camera = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: 6.0)
+        viewMapControl.camera = camera
+        getAddressFromLatLon(lat:userData.lat,lon:userData.lng)
+        
         print(salonData)
     }
     func GetInfoUserFail(ErrorMessage:String){
         viewActivitySmall?.dismissAndStopAnimation()
+        alert(message: ErrorMessage, buttonMessage: NSLocalizedString("OK", comment: ""))
         print(ErrorMessage)
+    }
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "UpdateLocationVC") as? UpdateLocationVC
+        nextVC?.parentVC = self
+        self.navigationController?.pushViewController(nextVC!, animated: true)
+
     }
     func loadImage(_ sender:UITapGestureRecognizer){
         let alert =  UIAlertController(title: NSLocalizedString("Choose Image Loc", comment: ""), message: "", preferredStyle: .alert)
-        
-        
         alert.addAction(UIAlertAction(title: NSLocalizedString("Phone", comment: ""), style: .default, handler: { (action : UIAlertAction) in
             
             self.imagePicker.sourceType = .photoLibrary
@@ -127,18 +166,6 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
         
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func btnEdit_Click(_ sender: Any) {
-        if btnBarEdit.title == NSLocalizedString("Edit", comment: ""){
-            btnBarEdit.title = NSLocalizedString("Save", comment: "")
-            enableDisableFields(status: "enable")
-        }else{
-            btnBarEdit.title = NSLocalizedString("Edit", comment: "")
-            enableDisableFields(status: "disable")
-            showLoader()
-            
-            accountService.UpdateProfileUser(id: userData.id, name: txtName.text!, email: txtEmail.text!, password: userData.password, mobile: txtMobile.text!, countryId: txtCountryCode.code, workFrom: txtWorkFrom.text!, workTo: txtWorkTo.text!, image: userData.img, lat: userData.lat, lng: userData.lng)
-        }
-    }
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         
         let scale = newWidth / image.size.width
@@ -151,13 +178,6 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
         UIGraphicsEndImageContext()
         
         return newImage!
-    }
-    @IBAction func btnLogout_Click(_ sender: Any) {
-        
-        Helper.sharedInstance.clearUserData()
-        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC
-        self.navigationController?.pushViewController(nextVC!, animated: true)
-
     }
     func initMap(){
         let camera = GMSCameraPosition.camera(withLatitude: 30.031957899999998, longitude: 31.408473099999995, zoom: 6.0)
@@ -176,7 +196,7 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
             txtWorkFrom.isEnabled=true
             txtWorkTo.isEnabled=true
             txtEmail.isEnabled=true
-            txtCountryCode.isEnabled=true
+            viewCode.isUserInteractionEnabled=true
             txtMobile.isEnabled=true
             imgProfilePic.isUserInteractionEnabled=true
             btnWorkingFrom.isEnabled = true
@@ -186,13 +206,14 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
             txtWorkTo.borderStyle = .roundedRect
             txtEmail.borderStyle = .roundedRect
             txtMobile.borderStyle = .roundedRect
-            txtCountryCode.borderStyle = .roundedRect
-            }else{
+            viewMapControl.isUserInteractionEnabled = true
+        }
+        else{
             txtName.isEnabled=false
             txtWorkFrom.isEnabled=false
             txtWorkTo.isEnabled=false
             txtEmail.isEnabled=false
-            txtCountryCode.isEnabled=false
+            viewCode.isUserInteractionEnabled=false
             txtMobile.isEnabled=false
             imgProfilePic.isUserInteractionEnabled=false
             btnWorkingFrom.isEnabled = false
@@ -203,9 +224,8 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
             txtWorkTo.borderStyle = .none
             txtEmail.borderStyle = .none
             txtMobile.borderStyle = .none
-            txtCountryCode.borderStyle = .none
             txtSeparator.borderStyle = .none
-          
+            viewMapControl.isUserInteractionEnabled = false
         }
     }
     func showLoader(){
@@ -220,17 +240,52 @@ class MyProfileVC: UIViewController,GetInfoUser,UpdateProfileUser,GMSMapViewDele
         let registerClick = UITapGestureRecognizer(target: self, action: #selector (self.loadImage(_:)))
         imgProfilePic.addGestureRecognizer(registerClick)
     }
-    func initPicker(){
-        txtCountryCode.favoriteCountriesLocaleIdentifiers = ["RU", "ER", "JM"]
-        txtCountryCode.phonePickerDelegate =  self
-        //let country = Country.countryBy(countryCode: "EG")
-        //txtCountryCode.currentSelectedCountry = country
+    func getAddressFromLatLon(lat:String,lon:String) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let ceo: CLGeocoder = CLGeocoder()
+        if let latitude = Double(lat), let longitude = Double(lon){
+            center.latitude = latitude
+            center.longitude = longitude
+        }else{
+            return
+        }
         
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        var addressString : String = ""
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+                
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    
+                    //if pm.subLocality != nil {
+                      //  addressString = addressString + pm.subLocality! + ", "
+                   // }
+                    if pm.thoroughfare != nil {
+                        addressString = addressString + pm.thoroughfare! + ", "
+                    }
+                    if pm.locality != nil {
+                        addressString = addressString + pm.locality! + ", "
+                    }
+                    if pm.country != nil {
+                        addressString = addressString + pm.country! + ", "
+                    }
+                    if pm.postalCode != nil {
+                        addressString = addressString + pm.postalCode! + " "
+                    }
+                    print(addressString)
+                    self.lblAddress.text = addressString
+                }
+        })
     }
     func initNavigationBar(){
-        
         self.navigationItem.title = NSLocalizedString("My Profile", comment: "")
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xf5c1f0)
         self.navigationController?.navigationBar.tintColor =  UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.setNavigationBarHidden(false, animated: false)

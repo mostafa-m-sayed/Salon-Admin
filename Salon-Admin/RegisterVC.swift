@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import NKVPhonePicker
 import SkyFloatingLabelTextField
 
-class RegisterVC: UIViewController {
+class RegisterVC: UIViewController,CodeDropDownDelegate {
     
-    @IBOutlet weak var txtCountryCode: NKVPhonePickerTextField!
-    
+    @IBOutlet weak var viewCode: CodeDropDown!
+    var selectCountry : Country!
+
     @IBOutlet weak var txtName: SkyFloatingLabelTextField!
     @IBOutlet weak var txtEmail: SkyFloatingLabelTextField!
     @IBOutlet weak var txtPassword: SkyFloatingLabelTextField!
@@ -23,16 +23,13 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
         initTextFields()
         initNavigationBar()
-        initPicker()
-        
-        //get corrent country
-        //let locale = Locale.current
-        //let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
+        viewCode.delegate = self
     }
-    
+    func codeDropDown(_ codeDropDown: CodeDropDown, didSelectItem country: Country) {
+        selectCountry = country
+    }
+
     @IBAction func btnContinue_Click(_ sender: Any) {
-        print(txtCountryCode.code)
-        
         if txtPassword.text == ""{
             alert(message: NSLocalizedString("Null Password", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
@@ -49,8 +46,12 @@ class RegisterVC: UIViewController {
             alert(message: NSLocalizedString("Null Mobile", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
             return
         }
+        if selectCountry == nil{
+            alert(message: NSLocalizedString("Null Country", comment: ""), buttonMessage: NSLocalizedString("OK", comment: ""))
+            return
+        }
         
-        let userDetails = UserProfile(name: txtName.text!, email: txtEmail.text!, mobile: txtMobile.text!, password: txtPassword.text!,countryCode:txtCountryCode.code)
+        let userDetails = UserProfile(name: txtName.text!, email: txtEmail.text!, mobile: txtMobile.text!, password: txtPassword.text!,countryCode:selectCountry.id)
         
         let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "CompleteRegisterVC") as? CompleteRegisterVC
         nextVC?.userDetails = userDetails
@@ -79,17 +80,18 @@ class RegisterVC: UIViewController {
     
     func initNavigationBar(){
         self.navigationItem.title = NSLocalizedString("Register", comment: "")
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xf5c1f0)
         self.navigationController?.navigationBar.tintColor =  UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    func initPicker(){
-        txtCountryCode.favoriteCountriesLocaleIdentifiers = ["RU", "ER", "JM"]
-        txtCountryCode.phonePickerDelegate =  self
-        let country = Country.countryBy(countryCode: "EG")
-        txtCountryCode.currentSelectedCountry = country
-        //txtCountryCode.text = "+20"
+        navigationItem.setHidesBackButton(true, animated: false)
+        if Helper.sharedInstance.getAppLanguage() == "ar"{
+            if navigationItem.leftBarButtonItem != nil{
+                navigationItem.rightBarButtonItem = navigationItem.leftBarButtonItem
+                navigationItem.leftBarButtonItem = nil
+            }
+        }
+
     }
     
 }

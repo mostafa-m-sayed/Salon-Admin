@@ -6,15 +6,12 @@ target 'Salon-Admin' do
   use_frameworks!
 
   # Pods for Salon-Admin
-    pod 'Alamofire', '~> 4.5'
-    pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'Alamofire', '~> 4.5'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'IQKeyboardManagerSwift', '4.0.10'
-  pod 'NKVPhonePicker'
   pod 'Cosmos', '~> 11.0'
   pod ‘DatePickerDialog’
-
-
 end

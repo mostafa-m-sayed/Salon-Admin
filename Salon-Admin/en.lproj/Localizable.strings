@@ -1,19 +1,28 @@
 
 //MARK: Place Holders
 
-"Name" = "Salon Name/Beauty Expert";
+"Name" = "Salon name or Beauty expert";
 "Email" = "Email Address";
 "Password" = "Password";
 "From" = "From";
 "To" = "To";
-"Phone Or Email" = "Phone number/Email";
+"Phone Or Email" = "Email or mobile number";
 
 //MARK: Page Titles
 
-"Register" = "Register";
-"Complete Register" = "Complete Register";
+"Register" = "New register";
+"Complete Register" = "Continue Register";
 "Locate Yourself" = "Locate Yourself";
 "My Profile" = "My Profile";
+"Login" = "Login";
+"Notifications" = "Notifications";
+"More" = "More";
+"Reservations" = "Reservations";
+"Add Subcategory" = "Add Main Services";
+"Contact Us" = "Contact us";
+"About Us" = "About us";
+"Terms Of Use" = "Terms of use";
+"Order Details" = "Order details";
 
 //MARK: Error Messages
 
@@ -28,6 +37,7 @@
 "Waiting confirmation" = "Waiting for confirmation";
 "Select Location" = "Select Your Location";
 "Relogin" = "Error, Please Relogin";
+"Delete Image?" = "Delete Image ?";
 
 //MARK: Buttons
 
@@ -35,8 +45,25 @@
 "Edit" = "Edit";
 "Save" = "Save";
 "Logout"="Logout";
+"Yes" = "Yes";
+"No" = "No";
+"Add" = "Add";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"Search" = "Search";
 
 //MARK: Image
 "Choose Image Loc" = "Choose Image From";
 "Phone" = "Phone";
 "Camera" = "Camera";
+
+//MARK: Add Service
+"Service Name" = "Service Name";
+"Service Price" = "Price";
+"Service Currency" = "Currency";
+
+//MARK: Status Types
+"Accepted" = "Accepted";
+"Processing" = "Processing";
+"Completed" = "Completed";
+"Change Order Status" = "Change order status";

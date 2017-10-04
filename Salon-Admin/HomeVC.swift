@@ -11,18 +11,21 @@ import UIKit
 class HomeVC: UIViewController {
     
     
+    @IBOutlet weak var viewEnglish: UIView!
+    @IBOutlet weak var viewArabic: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        self.view.semanticContentAttribute = .forceLeftToRight
+
+
         let lang = Helper.sharedInstance.getAppLanguage()
         if lang != ""{
-            setAppLang(lng: lang)
             if let usr =  Helper.sharedInstance.UserDetails{
+                setAppLang(lng: lang)
                 if usr.id != "" {
                     setAppLang(lng: lang)
-                    let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "MainPageVC") as? MainPageVC
+                    let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "MainTBC") as? MainTBC
                     self.navigationController?.pushViewController(nextVC!, animated: true)
                     
                 }else{
@@ -33,8 +36,6 @@ class HomeVC: UIViewController {
                 }
             }
         }
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -65,7 +66,7 @@ class HomeVC: UIViewController {
 //        UIView.transition(with: mainwindow, duration: 0.0, options: .transitionFlipFromLeft, animations: { () -> Void in
 //        }) { (finished) -> Void in
 //        }
-        
+//
         let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
         self.navigationController?.pushViewController(nextVC!, animated: true)
         

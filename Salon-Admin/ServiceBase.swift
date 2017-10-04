@@ -18,5 +18,35 @@ class ServiceBase: NSObject{
     let UserInfo = "user_information"
     let ForgetPassword = "forgetpassword"
     let UpdateProfile = "profile"
+    let Logout = "logout"
+    //MARK: Images
+    let AddImage = "add_img"
+    let DeleteImage = "delete_img"
     
+    //MARK: Service
+    
+    let GetSalonSubCategories = "list_salon_sub_category"
+    let GetSalonServices = "list_salon_service"
+    
+    let AddSalonSubcategory = "add_salon_sub_category_ios"
+    let DeleteSalonSubCategory = "delete_salon_sub_category"
+    let AddSalonService = "add_service"
+    let EditSalonService = "edit_service"
+    let DeleteSalonService = "delete_service"
+    let UpdateSalonService = "edit_service"
+    
+    let GetAvailableCategoriesWithSubcategories = "list_category_and_inner"
+    let GetAppInfo = "list_mainsetting"
+    
+    //MARK: Reservations
+    let CurrentOrders = "current_orders"
+    let FinishedOrders = "finished_orders"
+    let OrderDetails = "get_order"
+
+    let ChangeOrderStatus = "change_order_status"
+    
+    //MARK: Notifications
+    let GetNotifications = "salon_notification"
+    let AcceptOrder = "accept_order"
+    let CloseOrder = "close_order"
 }

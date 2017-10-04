@@ -3,7 +3,7 @@
 
 "2Zw-Z1-Sh5.text" = "نسيت كلمة المرور";
 "ltF-bi-FEV.text" = "أو";
-"gqQ-gF-lcw.text" = "مستخدم جديد";
+"gqQ-gF-lcw.text" = "تسجيل جديد";
 "Ksl-OC-g0A.normalTitle" = "تسجيل دخول";
 
 //MARK Register Page
@@ -23,13 +23,51 @@
 
 //MARK: Main Page
 
-"w3y-uT-za4.text" = "الرئيسية";
-"fdt-99-eRb.normalTitle" = "حسابي";
+"hvr-mo-z6L.normalTitle" = "الخدمات";
+"DT3-2C-UVH.normalTitle" = "الصور";
+"EPR-M5-Tse.normalTitle" = "بياناتي";
+
+"im2-Va-e2M.title"="خروج";
+"bNP-Mt-wj8.title"="تعديل";
 
 //MARK: My Profile Page
 
 "Yay-hg-jqL.text" = "مواعيد العمل";
 "nDb-K3-l3n.text" = "البريد الالكتروني";
 "475-5C-pcI.text" = "رقم الهاتف";
-"im2-Va-e2M.title"="خروج";
-"bNP-Mt-wj8.title"="تعديل";
+
+//MARK: Subcategory Page
+
+"CAr-na-oEY.text" = "عدد الخدمات :";
+"BKG-HU-d5A.text" = "القسم :";
+
+//MARK: Service List
+
+
+//MARK: More Page
+
+"4wr-mc-iVz.text" = "الاشعارات";
+"IhR-L9-Vdf.text" = "اتصل بنا";
+"Kaw-Rj-8AO.text" = "عن التطبيق";
+"3FS-8b-uN6.text" = "شروط الاستخدام";
+"HHl-zT-mo0.text" = "مشاركة التطبيق";
+
+//MARK: Reservations
+"BjD-Qf-kHH.normalTitle" = "السابقة";
+"W2M-xG-uWx.normalTitle" = "القادمة";
+
+//MARK: Notifications
+"tN1-T1-hM2.text" = "طلب حجز من";
+
+//MARK: Reservation Details
+
+"mdO-ri-EtX.text" = "عدد الافراد :";
+"LXV-Kj-3lI.text" = "المجموع";
+"pqI-q9-fRH.text" = "تاريخ الحجز";
+"7PG-nJ-wNl.text" = "الحالة";
+
+//MARK: Update Location
+"nTW-1B-lUr.normalTitle" = "تسجيل";
+
+//MARK: Forgot Password
+"SWU-lJ-Eqg.normalTitle" = "ارسال";

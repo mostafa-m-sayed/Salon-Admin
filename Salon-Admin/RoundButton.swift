@@ -10,7 +10,7 @@ import UIKit
 
 private var roundKey = false
 
-extension UIButton {
+extension UIView {
     
     @IBInspectable var roundDesign: Bool{
         get{

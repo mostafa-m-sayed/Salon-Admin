@@ -1,19 +1,25 @@
 
 //MARK: Place Holders
 
-"Name" = "اسم الصالون/خبيرة التجميل";
+"Name" = "اسم الصالون او خبيرة التجميل";
 "Email" = "البريد الالكتروني";
 "Password" = "كلمة المرور";
 "From" = "من";
 "To" = "إلي";
-"Phone Or Email" = "رقم الموبيل/البريد الالكتروني";
+"Phone Or Email" = "رقم الهاتف او البريد الالكتروني";
 
 //MARK: Page Titles
 
-"Register" = "انشاء حساب";
-"Complete Register" = "اكمال الانشاء";
+"Register" = "تسجيل جديد";
+"Complete Register" = "متابعة التسجيل";
 "Locate Yourself" = "تحديد موقعك";
 "My Profile" = "حسابي";
+"Login" = "تسجيل دخول";
+"Notifications" = "الاشعارات";
+"More" = "المزيد";
+"Reservations" = "الحجوزات";
+"Add Subcategory" = "اضافة الخدمات الرئيسية";
+"Order Details" = "تفاصيل الطلب";
 
 //MARK: Error Messages
 
@@ -28,6 +34,7 @@
 "Waiting confirmation" = "في انتظار التأكيد";
 "Select Location" = "اختر موقعك";
 "Relogin" = "خطأ، برجاء اعاده تسجيل الدخول";
+"Delete Image?" = "مسح الصورة ؟";
 
 //MARK: Buttons
 
@@ -35,8 +42,26 @@
 "Edit" = "تعديل";
 "Save" = "حفظ";
 "Logout"="خروج";
+"Yes" = "نعم";
+"No" = "لا";
+"Add" = "اضافة";
+"Delete" = "مسح";
+"Cancel" = "الغاء";
+"Search" = "بحث";
 
 //MARK: Image
 "Choose Image Loc" = "اختيار الصورة من";
 "Phone" = "الهاتف";
 "Camera" = "الكاميرا";
+
+//MARK: Add Service
+"Service Name" = "اسم الخدمة";
+"Service Price" = "السعر";
+"Service Currency" = "العملة";
+
+//MARK: Status Types
+"Accepted" = "تم القبول";
+"Processing" = "قيد العمل";
+"Completed" = "تم الإنتهاء";
+"Change Order Status" = "تعديل حالة الطلب";
+

@@ -23,7 +23,8 @@ extension UIView {
                // self.layer.masksToBounds = true
                 self.clipsToBounds  = true
                 self.layer.cornerRadius = self.frame.size.width/2
-                //self.layer.borderWidth = 1.0
+                self.layer.borderWidth = 1.0
+                self.layer.borderColor = UIColor.white.cgColor
             }
             else{
                 self.layer.cornerRadius = 0

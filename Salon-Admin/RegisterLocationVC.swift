@@ -38,7 +38,8 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
         
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
-        
+        searchController?.title = NSLocalizedString("Search", comment: "")
+        searchController?.searchBar.text = NSLocalizedString("Search", comment: "")
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         let screenWidth = UIScreen.main.bounds.width
@@ -62,9 +63,9 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
     func CompleteRegisterUserSuccess(salonData: Dictionary<String,AnyObject>){
         viewActivitySmall?.dismissAndStopAnimation()
         
-        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "MainPageVC") as? MainPageVC
+        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "MainTBC") as? MainTBC
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.pushViewController(nextVC!, animated: true)
-
     }
     func CompleteRegisterUserFail(ErrorMessage:String){
         viewActivitySmall?.dismissAndStopAnimation()
@@ -94,6 +95,7 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
             currentLocation = locationManager.location
             let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 17.0)
             self.viewMapControl?.animate(to: camera)
+            addMarker(cordinates: currentLocation.coordinate)
             print("Loc::")
             print(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude)
         }
@@ -146,13 +148,7 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
     }
 
     //MARK: Helpers
-    func initNavigationBar(){
-        self.navigationItem.title = NSLocalizedString("Locate Yourself", comment: "")
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
-        self.navigationController?.navigationBar.tintColor =  UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
+    
     func initMap(){
         let camera = GMSCameraPosition.camera(withLatitude: 30.031957899999998, longitude: 31.408473099999995, zoom: 6.0)
         viewMapControl.camera = camera
@@ -166,6 +162,20 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
         viewActivitySmall?.showAndStartAnimate()
         viewActivitySmall?.center = CGPoint(x: (self.view?.frame.size.width)!/2, y: (self.view?.frame.size.height)!/2)
     }
+    @IBAction func btnGetLocation_Click(_ sender: Any) {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
+            currentLocation = locationManager.location
+            let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 17.0)
+            self.viewMapControl?.animate(to: camera)
+           // addMarker(cordinates: currentLocation.coordinate)
+            print("Loc::")
+            print(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude)
+        }
+        else{
+            locationManager.requestWhenInUseAuthorization()
+            locationAuthStatus()
+        }
+    }
     func addMarker(cordinates:CLLocationCoordinate2D)  {
                 let marker = GMSMarker()
                 marker.position = cordinates
@@ -176,5 +186,20 @@ class RegisterLocationVC: UIViewController, CLLocationManagerDelegate,GMSAutocom
     }
     func clearMarkers() {
         viewMapControl.clear()
+    }
+    func initNavigationBar(){
+        self.navigationItem.title = NSLocalizedString("Locate Yourself", comment: "")
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xf5c1f0)
+        self.navigationController?.navigationBar.tintColor =  UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        if Helper.sharedInstance.getAppLanguage() == "ar"{
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+            if navigationItem.leftBarButtonItem != nil{
+                navigationItem.rightBarButtonItem = navigationItem.leftBarButtonItem
+                navigationItem.leftBarButtonItem = nil
+                navigationItem.setHidesBackButton(true, animated: false)
+            }
+        }
     }
 }

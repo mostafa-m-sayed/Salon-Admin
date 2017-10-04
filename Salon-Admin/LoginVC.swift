@@ -31,12 +31,12 @@ class LoginVC: UIViewController,LoginUser {
         viewActivitySmall?.dismissAndStopAnimation()
         let userDetails = UserProfile(salonData: salonData)
         Helper.sharedInstance.saveUserData(userData: userDetails)
-        if Bool(userDetails.completed)==false{
+        if userDetails.completed == "0"{
             let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "RegisterLocationVC") as? RegisterLocationVC
             nextVC?.userID = userDetails.id
             self.navigationController?.pushViewController(nextVC!, animated: true)
         }else{
-            let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "MainPageVC") as? MainPageVC
+            let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "MainTBC") as? MainTBC
             self.navigationController?.pushViewController(nextVC!, animated: true)
             Helper.sharedInstance.storeDeviceToken(DToken: userDetails.devicetoken)
         }
@@ -71,8 +71,8 @@ class LoginVC: UIViewController,LoginUser {
     }
     
     func showForgotPasswordView(_ sender:UITapGestureRecognizer) {
-        //TODO: Implement
-    }
+        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "ForgetPasswordVC") as? ForgetPasswordVC
+        self.navigationController?.pushViewController(nextVC!, animated: true)    }
     
     //MARK: Helpers
     func addGesture(){

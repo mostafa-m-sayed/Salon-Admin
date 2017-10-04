@@ -34,7 +34,10 @@ protocol UpdateProfileUser: class {
     func UpdateProfileUserSuccess(salonData: Dictionary<String,AnyObject>)
     func UpdateProfileUserFail(ErrorMessage:String)
 }
-
+protocol LogoutUser: class {
+    func LogoutUserSuccess(message: String)
+    func LogoutUserFail(ErrorMessage:String)
+}
 
 class AccountService: NSObject{
     var serviceBase = ServiceBase()
@@ -46,7 +49,7 @@ class AccountService: NSObject{
     weak var GetInfoUserDelegate: GetInfoUser?
     weak var ForgetPasswordUserDelegate: ForgetPasswordUser?
     weak var UpdateProfileUserDelegate: UpdateProfileUser?
-    
+    weak var LogoutUserDelegate: LogoutUser?
     
     
     
@@ -69,9 +72,9 @@ class AccountService: NSObject{
             print("1: ")
             print(response)
             print("2: ")
-
+            
             print(response.result)
-
+            
             switch response.result {
             case .success :
                 if let  res = response.result.value as? [String : Any]{
@@ -163,7 +166,7 @@ class AccountService: NSObject{
         ]
         Alamofire.request(serviceURL, method: .post, parameters:params ,encoding: URLEncoding()).responseJSON {
             ( response ) in
-
+            
             switch response.result {
             case .success :
                 if let  res = response.result.value as? [String : Any]{
@@ -312,5 +315,39 @@ class AccountService: NSObject{
             }
         }
     }
-
+    func LogoutUser(id:String){
+        let serviceURL = "\(serviceBase.BASE_URL)\(serviceBase.Logout)"
+        let params:Dictionary<String,Any> = [
+            "salon_id": id
+        ]
+        Alamofire.request(serviceURL, method: .post, parameters:params ,encoding: URLEncoding()).responseJSON {
+            ( response ) in
+            
+            switch response.result {
+            case .success :
+                if let  res = response.result.value as? [String : Any]{
+                    if let Status = res["success"] as? Bool{
+                        switch Status {
+                        case true :
+                            if let message = res["validation"] as? String{
+                                self.LogoutUserDelegate?.LogoutUserSuccess(message: message)
+                            }
+                            break
+                        case false:
+                            if let StatusText = res["validation"] as? String{
+                                self.LogoutUserDelegate?.LogoutUserFail(ErrorMessage: StatusText)
+                            } else{
+                                self.LogoutUserDelegate?.LogoutUserFail(ErrorMessage: "Unable to logout")
+                            }
+                            break
+                        }
+                    }
+                }
+                break
+            case .failure :
+                self.LogoutUserDelegate?.LogoutUserFail(ErrorMessage: "Unable to process-Network Error")
+                break
+            }
+        }
+    }
 }

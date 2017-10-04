@@ -36,7 +36,7 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
         }
    
     @IBAction func showTimePicker(_ sender: UIButton) {
-        DatePickerDialog().show(title:"DatePicker",doneButtonTitle: "Done",cancelButtonTitle: "Cancel",datePickerMode: .time){
+        DatePickerDialog().show("DatePicker",doneButtonTitle: "Done",cancelButtonTitle: "Cancel",datePickerMode: .time){
             (date) -> Void in
             if let selectedDate = date{
                 let time = Helper.sharedInstance.getTimeFromDate(date: selectedDate)
@@ -145,11 +145,19 @@ class CompleteRegisterVC: UIViewController,UIImagePickerControllerDelegate  , UI
     
     func initNavigationBar(){
         self.navigationItem.title = NSLocalizedString("Complete Register", comment: "")
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xf5c1f0)
         self.navigationController?.navigationBar.tintColor =  UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
+        if Helper.sharedInstance.getAppLanguage() == "ar"{
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+            if navigationItem.leftBarButtonItem != nil{
+                navigationItem.rightBarButtonItem = navigationItem.leftBarButtonItem
+                navigationItem.leftBarButtonItem = nil
+                navigationItem.setHidesBackButton(true, animated: false)
+            }
+        }
+
     }
     
     func initTextFields(){

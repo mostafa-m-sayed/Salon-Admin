@@ -23,22 +23,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
-        if L102Language.currentAppleLanguage() == "ar"
-        {
-            L102Language.setAppleLAnguageTo(lang: "ar")
-            Helper.sharedInstance.storeAppLanguage(lang: "ar")
-            UIView.appearance().semanticContentAttribute = .forceRightToLeft
-        }
-        else{
-            L102Language.setAppleLAnguageTo(lang: "en")
-            UIView.appearance().semanticContentAttribute = .forceLeftToRight
-            
-            Helper.sharedInstance.storeAppLanguage(lang: "en")
-        }
-        L012Localizer.DoTheMagic()
+//        if L102Language.currentAppleLanguage() == "ar"
+//        {
+//            L102Language.setAppleLAnguageTo(lang: "ar")
+//            Helper.sharedInstance.storeAppLanguage(lang: "ar")
+//            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+//        }
+//        else{
+//            L102Language.setAppleLAnguageTo(lang: "en")
+//            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+//            
+//            Helper.sharedInstance.storeAppLanguage(lang: "en")
+//        }
         
         
-        
+        //L102Language.setAppleLAnguageTo(lang: "en")
+        //Helper.sharedInstance.storeAppLanguage(lang: "en")
+        //L012Localizer.DoTheMagic()
+
         
         
         return true
@@ -63,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
     }
 
 

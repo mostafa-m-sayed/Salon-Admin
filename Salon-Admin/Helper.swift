@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class Helper {
     
     static let sharedInstance = Helper()
@@ -40,11 +40,14 @@ class Helper {
             defaults.removeObject(forKey: "Number")
             defaults.removeObject(forKey: "DToken")
             defaults.removeObject(forKey: "Complete")
-            defaults.removeObject(forKey: "Lang")
+            //defaults.removeObject(forKey: "Lang")
         }
     
     func storeAppLanguage(lang: String){
         defaults.set(lang, forKey: "Lang")
+    }
+    func clearLanguage(){
+        defaults.removeObject(forKey: "Lang")
     }
     func getAppLanguage()-> String{
         if let lang = defaults.string(forKey: "Lang"){
@@ -61,7 +64,18 @@ class Helper {
         }
         return "none"
     }
-
+    func getStatusName(statusId:String) ->String{
+        switch statusId {
+        case "1":
+            return NSLocalizedString("Accepted", comment: "")
+        case "2":
+            return NSLocalizedString("Processing", comment: "")
+        case "3":
+            return NSLocalizedString("Completed", comment: "")
+        default:
+            return ""
+        }
+    }
     func convertTimeFormat(time24:String) ->String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -76,5 +90,23 @@ class Helper {
         //let seconds = calendar.component(.second, from: date)
         return "\(hour):\(minutes)"
         //print("hours = \(hour):\(minutes):\(seconds)")
+    }
+    func makeCall(phoneNumber:String){
+        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    func sendMessage(phoneNumber:String){
+        if let url = URL(string: "sms://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 }

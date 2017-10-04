@@ -3,7 +3,7 @@
 
 "2Zw-Z1-Sh5.text" = "Forgot Password";
 "ltF-bi-FEV.text" = "Or";
-"gqQ-gF-lcw.text" = "New User";
+"gqQ-gF-lcw.text" = "New register";
 "Ksl-OC-g0A.normalTitle" = "Login";
 
 //MARK Register Page
@@ -23,13 +23,49 @@
 
 //MARK: Main Page
 
-"w3y-uT-za4.text" = "Home Page";
-"fdt-99-eRb.normalTitle" = "My Profile";
+
+"hvr-mo-z6L.normalTitle" = "Services";
+"DT3-2C-UVH.normalTitle" = "Images";
+"EPR-M5-Tse.normalTitle" = "My Info";
+
+"im2-Va-e2M.title"="Logout";
+"bNP-Mt-wj8.title"="Edit";
 
 //MARK: My Profile Page
 
 "Yay-hg-jqL.text" = "Working Hours";
 "nDb-K3-l3n.text" = "Email Address";
 "475-5C-pcI.text" = "Mobile Number";
-"im2-Va-e2M.title"="Logout";
-"bNP-Mt-wj8.title"="Edit";
+
+//MARK: Subcategory Page
+
+"CAr-na-oEY.text" = "Number of services: ";
+"BKG-HU-d5A.text" = "division: ";
+
+//MARK: More Page
+
+"4wr-mc-iVz.text" = "Notifications";
+"IhR-L9-Vdf.text" = "Contact us";
+"Kaw-Rj-8AO.text" = "About us";
+"3FS-8b-uN6.text" = "Terms of use";
+"HHl-zT-mo0.text" = "Share";
+
+//MARK: Reservations
+"BjD-Qf-kHH.normalTitle" = "Finished";
+"W2M-xG-uWx.normalTitle" = "Current";
+
+//MARK: Notifications
+"tN1-T1-hM2.text" = "Order request from";
+
+//MARK: Reservation Details
+
+"mdO-ri-EtX.text" = "Number of persons:";
+"LXV-Kj-3lI.text" = "Total";
+"pqI-q9-fRH.text" = "Order date";
+"7PG-nJ-wNl.text" = "Status";
+
+//MARK: Update Location
+"nTW-1B-lUr.normalTitle" = "Register";
+
+//MARK: Forgot Password
+"SWU-lJ-Eqg.normalTitle" = "Send";

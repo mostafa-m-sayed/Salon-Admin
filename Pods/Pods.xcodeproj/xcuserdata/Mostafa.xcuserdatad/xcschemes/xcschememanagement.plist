@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>NKVPhonePicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Salon-Admin.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,6 +37,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0299E68479DA19B3437A8F80EDEFC6CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>184A1650DC0B648BD756068E60BF2C59</key>
 		<dict>
 			<key>primary</key>
@@ -52,27 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>82833A620504AA3CDDAE7E415F54371D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC079D1F0607FA687152937078F9BC3A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C235F77E101E742652CCF98FFDFA5182</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D43AA988F02BBAEAA30D461A0AFC5644</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E8B07F23ECFB5BD02D88818419B4D693</key>
 		<dict>
 			<key>primary</key>
 			<true/>

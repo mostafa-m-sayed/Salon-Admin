@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainPageVC: UIViewController {
+class MainPageVC: UIViewController, LogoutUser {
     
     @IBOutlet weak var viewPageContent: UIView!
     
@@ -17,7 +17,7 @@ class MainPageVC: UIViewController {
     var ServicesView : ServicesVC!
     
     var currentActiveViewController: UIViewController?
-    
+    var accountService = AccountService()
     
     @IBOutlet weak var viewBarServices: UIView!
     @IBOutlet weak var viewBarImages: UIView!
@@ -28,20 +28,21 @@ class MainPageVC: UIViewController {
     @IBOutlet weak var navBtnEdit: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.profileView = self.storyboard?.instantiateViewController(withIdentifier: "MyProfileVC") as? MyProfileVC
-         self.ImagesView = self.storyboard?.instantiateViewController(withIdentifier: "ImagesVC") as? ImagesVC
-         self.ServicesView = self.storyboard?.instantiateViewController(withIdentifier: "ServicesVC") as? ServicesVC
-        self.activeViewController = self.profileView
-        
         initNavigationBar()
+        self.profileView = self.storyboard?.instantiateViewController(withIdentifier: "MyProfileVC") as? MyProfileVC
+        self.ImagesView = self.storyboard?.instantiateViewController(withIdentifier: "ImagesVC") as? ImagesVC
+        self.ServicesView = self.storyboard?.instantiateViewController(withIdentifier: "ServicesVC") as? ServicesVC
+        self.activeViewController = self.ServicesView
+        accountService.LogoutUserDelegate = self
     }
-    
+    func LogoutUserSuccess(message: String){}
+    func LogoutUserFail(ErrorMessage:String){}
     
     @IBAction func navBtnLogout_Click(_ sender: Any) {
+        accountService.LogoutUser(id: Helper.sharedInstance.UserDetails.id)
         Helper.sharedInstance.clearUserData()
-        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC
+        let nextVC = self.storyboard!.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
         self.navigationController?.pushViewController(nextVC!, animated: true)
-        
     }
     @IBAction func navBtnEdit_Click(_ sender: Any) {
         if let profileVC = activeViewController as? MyProfileVC{
@@ -52,10 +53,8 @@ class MainPageVC: UIViewController {
                 navBtnEdit.title = NSLocalizedString("Edit", comment: "")
                 profileVC.enableDisableFields(status: "disable")
                 profileVC.showLoader()
-                
-                profileVC.accountService.UpdateProfileUser(id: profileVC.userData.id, name: profileVC.txtName.text!, email: profileVC.txtEmail.text!, password: profileVC.userData.password, mobile: profileVC.txtMobile.text!, countryId: profileVC.txtCountryCode.code, workFrom: profileVC.txtWorkFrom.text!, workTo: profileVC.txtWorkTo.text!, image: profileVC.userData.img, lat: profileVC.userData.lat, lng: profileVC.userData.lng)
+                profileVC.accountService.UpdateProfileUser(id: profileVC.userData.id, name: profileVC.txtName.text!, email: profileVC.txtEmail.text!, password: profileVC.userData.password, mobile: profileVC.txtMobile.text!, countryId: profileVC.selectCountry.id, workFrom: profileVC.txtWorkFrom.text!, workTo: profileVC.txtWorkTo.text!, image: profileVC.userData.img, lat: profileVC.userData.lat, lng: profileVC.userData.lng)
             }
-            
         }
     }
     
@@ -85,8 +84,8 @@ class MainPageVC: UIViewController {
         if let activeVC = activeViewController {
             addChildViewController(activeVC)
             
-            //activeVC.automaticallyAdjustsScrollViewInsets = true
-            activeVC.view.autoresizingMask = UIViewAutoresizing.flexibleHeight
+            activeVC.automaticallyAdjustsScrollViewInsets = true
+            //activeVC.view.autoresizingMask = UIViewAutoresizing.flexibleHeight
             
             activeVC.view.frame = viewPageContent.bounds
             viewPageContent.addSubview(activeVC.view)
@@ -143,11 +142,13 @@ class MainPageVC: UIViewController {
         
     }
     
-    
-    
     func initNavigationBar(){
+        navBtnEdit.title=""
+        navBtnEdit.isEnabled=false
+        navBtnLogout.title=""
+        navBtnLogout.isEnabled=false
         self.navigationItem.title = NSLocalizedString("My Profile", comment: "")
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xF5CFF3)
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb:0xf5c1f0)
         self.navigationController?.navigationBar.tintColor =  UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.setNavigationBarHidden(false, animated: false)

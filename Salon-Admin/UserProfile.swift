@@ -28,7 +28,7 @@ class UserProfile {
     private var _devicetype:String!
     private var _open:String!
     private var _imgURL:String!
-    
+    private var _images:[Image]!
     
     public var id: String{
         if _id == nil {
@@ -163,6 +163,14 @@ class UserProfile {
             return _open
         }
     }
+    public var images:[Image]{
+        if _images==nil{
+            return [Image]()
+        }else{
+            return _images
+        }
+    }
+    
     init(name:String,email:String,mobile:String,password:String,countryCode:String) {
         _name = name
         _email = email
@@ -231,6 +239,16 @@ class UserProfile {
         }
         if let open = salonData["open"] as? String{
             _open = open
+        }
+        if let images = salonData["imgs"] as? [Dictionary<String,AnyObject>]{
+            if images.count > 0{
+                var serializedImages = [Image]()
+                for img in images {
+                    let serializedImg = Image(imgData: img)
+                    serializedImages.append(serializedImg)
+                }
+                _images = serializedImages
+            }
         }
     }
     func addMapCords(lat:String,lng:String){
