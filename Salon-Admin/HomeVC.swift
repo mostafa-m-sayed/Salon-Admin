@@ -17,8 +17,6 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.semanticContentAttribute = .forceLeftToRight
-
-
         let lang = Helper.sharedInstance.getAppLanguage()
         if lang != ""{
             if let usr =  Helper.sharedInstance.UserDetails{
@@ -38,9 +36,9 @@ class HomeVC: UIViewController {
         }
     }
     override func viewWillAppear(_ animated: Bool) {
+        //self.navigationController?.semanticContentAttribut
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
     
     func setAppLang(lng:String) {
         if lng.contains("ar"){

@@ -149,7 +149,7 @@ class AccountService: NSObject{
                 }
                 break
             case .failure :
-                self.RegisterUserDelegate?.RegisterUserFail(ErrorMessage: "Unable to login-Network Error")
+                self.LoginUserDelegate?.LoginUserFail(ErrorMessage: "Unable to login-Network Error")
                 break
             }
         }
@@ -202,7 +202,7 @@ class AccountService: NSObject{
         ]
         Alamofire.request(serviceURL, method: .post, parameters:params ,encoding: URLEncoding()).responseJSON {
             ( response ) in
-            
+            print(response)
             switch response.result {
             case .success :
                 if let  res = response.result.value as? [String : Any]{
